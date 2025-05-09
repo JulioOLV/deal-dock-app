@@ -1,7 +1,7 @@
-// components/ImageSlider.tsx
 "use client";
 
 import React, { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "./styles/image_slider.module.scss";
 
@@ -41,10 +41,13 @@ export const ImageSlider = ({ images }: Props) => {
         <div className={styles.slider__container}>
           {images.map((src, index) => (
             <div className={styles.slider__slide} key={index}>
-              <img
+              <Image
                 src={src}
                 alt={`Slide ${index}`}
                 className={styles.slider__image}
+                width={100}
+                height={100}
+                priority
               />
             </div>
           ))}
