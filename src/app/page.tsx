@@ -1,13 +1,13 @@
-import { Navbar, Card } from "./components";
+import { Navbar, ProductList } from "./components";
 
 import styles from "./page.module.scss";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <Navbar />
       <main className={styles.main}>
-        <Card />
+        <ProductList />
       </main>
       <footer className={styles.footer}>
         <p>Doidera e doideria</p>
