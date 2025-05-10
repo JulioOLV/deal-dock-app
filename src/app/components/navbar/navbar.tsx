@@ -1,21 +1,23 @@
-'use client';
+"use client";
 
 import Image from "next/image";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { useState } from "react";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./styles/navbar.module.scss";
 
 export const Navbar = () => {
+  const [search, setSearch] = useState("");
+
   const router = useRouter();
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const searchQuery = formData.get('search') as string;
-    router.push(`/?product=${searchQuery}`);
+    router.push(`/?product=${search}`);
   };
 
   return (
@@ -31,7 +33,14 @@ export const Navbar = () => {
           />
         </div>
         <form className={styles.search} onSubmit={handleSearch}>
-          <input id="search" name="search" type="text" placeholder="Buscar produtos..." />
+          <input
+            id="search"
+            name="search"
+            type="text"
+            placeholder="Buscar produtos..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
           <button type="submit">
             <FontAwesomeIcon icon={faMagnifyingGlass} width={14} height={14} />
           </button>
@@ -39,4 +48,4 @@ export const Navbar = () => {
       </div>
     </nav>
   );
-}
+};

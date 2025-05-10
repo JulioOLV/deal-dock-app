@@ -82,7 +82,7 @@ const getProducts = async (product: string = 'smartphone'): Promise<ProductAPIRe
   return res.json();
 };
 
-export const ProductList = async ({ product }: { product: string }) => {
+export const ProductList = async ({ product }: { product: string | undefined }) => {
   const products = await getProducts(product);
 
   return (

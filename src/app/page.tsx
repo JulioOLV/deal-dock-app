@@ -7,15 +7,16 @@ interface SearchPageProps {
 }
 
 export default async function Home({ searchParams }: SearchPageProps) {
-  const product = searchParams.product || "";
+  const { product: searchByProduct } = await searchParams;
+  
   return (
     <>
       <Navbar />
       <main className={styles.main}>
-        <ProductList product={product} />
+        <ProductList product={searchByProduct} />
       </main>
       <footer className={styles.footer}>
-        <p>Doidera e doideria</p>
+        <p>Footer</p>
       </footer>
     </>
   );
