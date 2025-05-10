@@ -1,6 +1,6 @@
 import { Navbar, ProductList } from "./components";
 
-import styles from "./page.module.scss";
+import styles from "./styles/page.module.scss";
 
 interface SearchPageProps {
   searchParams: { product?: string }
