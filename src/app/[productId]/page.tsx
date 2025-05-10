@@ -1,10 +1,10 @@
-import { Navbar } from "../components";
+import { Navbar, ProductDetail } from "../components";
 
 interface PageProps {
   params: Promise<{ productId: string }>
 }
 
-export default async function ProductDetail({
+export default async function ProductDetailPage({
   params,
 }: PageProps) {
   const { productId } = await params;
@@ -13,8 +13,7 @@ export default async function ProductDetail({
     <>
       <Navbar />
       <main>
-        <h1>Product Detail - {productId}</h1>
-        <p>Details about the product will be displayed here.</p>
+        <ProductDetail productId={productId} />
       </main>
     </>
   );
