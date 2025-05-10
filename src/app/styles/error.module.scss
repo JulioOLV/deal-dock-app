@@ -1,0 +1,31 @@
+.home__error__container {
+  width: 100%;
+  height: 100vh;
+  max-height: 200px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .home__error__button {
+    width: 200px;
+    height: 48px;
+    background-color: #3483fade;
+    color: #ffffff;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #3483fa;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(52, 131, 250, 0.5);
+    }
+  }
+}
