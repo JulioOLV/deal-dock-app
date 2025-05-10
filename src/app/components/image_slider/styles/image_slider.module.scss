@@ -1,6 +1,7 @@
 .slider {
   position: relative;
   overflow: hidden;
+  min-height: min-content;
 
   .slider__viewport {
     overflow: hidden;

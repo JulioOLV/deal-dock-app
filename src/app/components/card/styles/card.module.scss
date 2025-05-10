@@ -9,11 +9,11 @@
   background-color: #ffffff;
   width: 300px;
   max-height: 400px;
-  gap: $size-48;
+  gap: $size-24;
 
   .card__details {
     display: flex;
-    flex-direction: column;
+    flex-flow: wrap;
     text-align: start;
     gap: $size-8;
 
