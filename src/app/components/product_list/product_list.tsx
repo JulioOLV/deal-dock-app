@@ -66,40 +66,52 @@ export type ProductAPIResponse = {
   query_type: string;
 };
 
-const getProducts = cache(async (product: string = 'smartphone'): Promise<ProductAPIResponse> => {
-  const res = await fetch(`https://api.mercadolibre.com/products/search?site_id=MLB&status=active&q=${product || 'smartphone'}&limit=12&offset=0`, {
-    method: "GET",
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-      "Authorization": `Bearer APP_USR-4177817543971930-050921-7fb0a79e850a90d80bcf1795e35ddb2c-171802850`,
-    },
-    cache: "force-cache",
-  });
+const getProducts = cache(
+  async (product: string = "smartphone"): Promise<ProductAPIResponse> => {
+    const res = await fetch(
+      `https://api.mercadolibre.com/products/search?site_id=MLB&status=active&q=${
+        product || "smartphone"
+      }&limit=12&offset=0`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer APP_USR-4177817543971930-051010-7486b9231402c2f2f090d369e297a877-171802850`,
+        },
+        cache: "force-cache",
+      }
+    );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
   }
+);
 
-  return res.json();
-});
-
-export const ProductList = async ({ product }: { product: string | undefined }) => {
+export const ProductList = async ({
+  product,
+}: {
+  product: string | undefined;
+}) => {
   const products = await getProducts(product);
 
   return (
     <div className={styles.product_list}>
-      {
-        products.results.map((product) => (
-          <Card
-            key={product.id}
-            id={product.id}
-            title={product.name}
-            images={product.pictures.map((picture) => picture.url)}
-            brand={product.attributes.find((attr) => attr.id === "BRAND")?.value_name || "Desconhecido"}
-          />
-        ))
-      }
+      {products.results.map((product) => (
+        <Card
+          key={product.id}
+          id={product.id}
+          title={product.name}
+          images={product.pictures.map((picture) => picture.url)}
+          brand={
+            product.attributes.find((attr) => attr.id === "BRAND")
+              ?.value_name || "Desconhecido"
+          }
+        />
+      ))}
     </div>
   );
-}
+};
