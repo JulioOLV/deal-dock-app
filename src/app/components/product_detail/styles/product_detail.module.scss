@@ -37,8 +37,7 @@
       padding: $size-12;
       max-width: 350px;
       width: 350px;
-      max-height: 550px;
-      height: 550px;
+      height: max-content;
       gap: $size-24;
   
       .product__info__title {
@@ -76,6 +75,7 @@
       .product__detail__picker {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         align-items: center;
         gap: $size-8;
         margin-bottom: $size-12;
