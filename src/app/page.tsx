@@ -13,12 +13,12 @@ interface SearchPageProps {
 export default async function Home({ searchParams }: SearchPageProps) {
   const { product: searchByProduct } = await searchParams;
 
-  const listProduct = makeListProductUseCase(searchByProduct || "smartphone");
+  const listProductUseCase = makeListProductUseCase(searchByProduct || "smartphone");
 
   const getProducts = cache(
     async (): Promise<ProductAPIResponse> => {
       try {
-        const httpResponse = await listProduct.getProductList();
+        const httpResponse = await listProductUseCase.getProductList();
   
         return httpResponse;
       } catch (err: any) {
