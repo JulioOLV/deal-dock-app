@@ -1,3 +1,5 @@
+import { cache } from "react";
+
 import { Card } from "../card/card";
 
 import styles from "./styles/product_list.module.scss";
@@ -64,7 +66,7 @@ export type ProductAPIResponse = {
   query_type: string;
 };
 
-const getProducts = async (product: string = 'smartphone'): Promise<ProductAPIResponse> => {
+const getProducts = cache(async (product: string = 'smartphone'): Promise<ProductAPIResponse> => {
   const res = await fetch(`https://api.mercadolibre.com/products/search?site_id=MLB&status=active&q=${product || 'smartphone'}&limit=12&offset=0`, {
     method: "GET",
     headers: {
@@ -80,7 +82,7 @@ const getProducts = async (product: string = 'smartphone'): Promise<ProductAPIRe
   }
 
   return res.json();
-};
+});
 
 export const ProductList = async ({ product }: { product: string | undefined }) => {
   const products = await getProducts(product);
