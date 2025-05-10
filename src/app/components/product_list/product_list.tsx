@@ -64,13 +64,13 @@ export type ProductAPIResponse = {
   query_type: string;
 };
 
-const getProducts = async (): Promise<ProductAPIResponse> => {
-  const res = await fetch("https://api.mercadolibre.com/products/search?site_id=MLB&status=active&q=smartphone&domain_id=MLB-CELLPHONES&limit=12&offset=0", {
+const getProducts = async (product: string = 'smartphone'): Promise<ProductAPIResponse> => {
+  const res = await fetch(`https://api.mercadolibre.com/products/search?site_id=MLB&status=active&q=${product || 'smartphone'}&limit=12&offset=0`, {
     method: "GET",
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
-      "Authorization": `Bearer APP_USR-4177817543971930-050917-949f719e70533a1e113584117be18b82-171802850`,
+      "Authorization": `Bearer APP_USR-4177817543971930-050921-7fb0a79e850a90d80bcf1795e35ddb2c-171802850`,
     },
     cache: "force-cache",
   });
@@ -82,8 +82,8 @@ const getProducts = async (): Promise<ProductAPIResponse> => {
   return res.json();
 };
 
-export const ProductList = async () => {
-  const products = await getProducts();
+export const ProductList = async ({ product }: { product: string }) => {
+  const products = await getProducts(product);
 
   return (
     <div className={styles.product_list}>
