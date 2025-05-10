@@ -137,7 +137,7 @@ export type ProductAPIDetailResponse = {
   family_name: string;
   type: string;
   buy_box_winner: BuyBoxWinner | null;
-  pickers: ProductPicker[];
+  pickers?: ProductPicker[];
   pictures: ProductPicture[];
   description_pictures: unknown[];
   main_features: ProductMainFeature[];
@@ -195,7 +195,7 @@ export async function ProductDetail({ productId }: ProductDetailProps) {
               images={product.pictures.map((picture) => picture.url)}
             />
           </div>
-          
+
           <div className={styles.product__info}>
             <div>
               {product.buy_box_winner && (
@@ -271,38 +271,32 @@ export async function ProductDetail({ productId }: ProductDetailProps) {
               </>
             )}
 
-            <span>
-              Cor escolhida:{" "}
-              <b>
-                {product.attributes.find((attr) => attr.id === "COLOR")
-                  ?.value_name || "Desconhecido"}
-              </b>
-            </span>
-
-            <span>
-              {product.pickers.map((pattr) => (
-                <span
-                  key={pattr.picker_id}
-                  className={styles.product__detail__picker}
-                >
-                  {pattr.picker_name}:
-                  {pattr.products.map((x) => (
-                    <span
-                      key={x.product_id}
-                      className={`${styles.product__detail__picker__item} ${
-                        product.attributes.find(
-                          (attr) => attr.id === pattr.picker_id
-                        )?.value_name === x.picker_label
-                          ? styles.product__detail__picker__item__selected
-                          : ""
-                      }`}
-                    >
-                      {x.picker_label}
-                    </span>
-                  ))}
-                </span>
-              ))}
-            </span>
+            {product.pickers && product.pickers.length > 0 && (
+              <span>
+                {product.pickers.map((pattr) => (
+                  <span
+                    key={pattr.picker_id}
+                    className={styles.product__detail__picker}
+                  >
+                    {pattr.picker_name}:
+                    {pattr.products.map((x) => (
+                      <span
+                        key={x.product_id}
+                        className={`${styles.product__detail__picker__item} ${
+                          product.attributes.find(
+                            (attr) => attr.id === pattr.picker_id
+                          )?.value_name === x.picker_label
+                            ? styles.product__detail__picker__item__selected
+                            : ""
+                        }`}
+                      >
+                        {x.picker_label}
+                      </span>
+                    ))}
+                  </span>
+                ))}
+              </span>
+            )}
 
             <a
               href={product.permalink}
