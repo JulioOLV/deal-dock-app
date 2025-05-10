@@ -1,4 +1,4 @@
-import { Navbar, ProductDetail } from "../components";
+import { Navbar, ProductDetail } from "../../components";
 
 interface PageProps {
   params: Promise<{ productId: string }>
