@@ -169,7 +169,7 @@ const getProductDetail = cache(
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          Authorization: `Bearer APP_USR-4177817543971930-051010-7486b9231402c2f2f090d369e297a877-171802850`,
+          Authorization: `Bearer APP_USR-4177817543971930-051016-a679aa3622afb3b90ed48ae0beef3696-171802850`,
         },
         cache: "force-cache",
       }
