@@ -11,6 +11,11 @@
   max-height: 400px;
   gap: $size-24;
 
+  .card__image {
+    display: flex;
+    height: 200px;
+  }
+
   .card__details {
     display: flex;
     flex-flow: wrap;

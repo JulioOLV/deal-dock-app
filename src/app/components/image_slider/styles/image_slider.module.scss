@@ -1,7 +1,6 @@
 .slider {
   position: relative;
   overflow: hidden;
-  min-height: min-content;
 
   .slider__viewport {
     overflow: hidden;
@@ -19,8 +18,7 @@
   .slider__image {
     display: block;
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: 100%;
   }
   
   .slider__button {
