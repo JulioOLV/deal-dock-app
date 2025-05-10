@@ -21,6 +21,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+main {
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

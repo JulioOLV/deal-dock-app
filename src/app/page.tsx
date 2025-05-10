@@ -12,7 +12,7 @@ export default async function Home({ searchParams }: SearchPageProps) {
   return (
     <>
       <Navbar />
-      <main className={styles.main}>
+      <main className={styles.container}>
         <ProductList product={searchByProduct} />
       </main>
       <footer className={styles.footer}>

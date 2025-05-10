@@ -1,14 +1,12 @@
 @use './variables' as *;
 
-.main {
-  max-width: 1200px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 0 auto;
-  padding-top: 2rem;
-  flex-wrap: wrap;
+main {
+  &.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 
 .card {
