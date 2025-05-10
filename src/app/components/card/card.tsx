@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { ImageSlider } from "..";
 
 import styles from "./styles/card.module.scss";
@@ -10,8 +13,14 @@ type CardProps = {
 }
 
 export const Card = ({ id, brand, title, images }: CardProps) => {
+  const route = useRouter();
+
+  const handleClick = (id: string) => {
+    route.push(`/product/${id}`);
+  }
+
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={() => handleClick(id)}>
       <div className={styles.card__image}>
         <ImageSlider images={images} />
       </div>

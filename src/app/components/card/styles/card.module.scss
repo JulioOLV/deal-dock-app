@@ -11,6 +11,11 @@
   max-height: 400px;
   gap: $size-24;
 
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+
   .card__image {
     display: flex;
     height: 200px;
