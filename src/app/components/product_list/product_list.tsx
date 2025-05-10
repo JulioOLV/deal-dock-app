@@ -68,26 +68,30 @@ export type ProductAPIResponse = {
 
 const getProducts = cache(
   async (product: string = "smartphone"): Promise<ProductAPIResponse> => {
-    const res = await fetch(
-      `https://api.mercadolibre.com/products/search?site_id=MLB&status=active&q=${
-        product || "smartphone"
-      }&limit=12&offset=0`,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer APP_USR-4177817543971930-051010-7486b9231402c2f2f090d369e297a877-171802850`,
-        },
-        cache: "force-cache",
+    try {
+      const res = await fetch(
+        `https://api.mercadolibre.com/products/search?site_id=MLB&status=active&q=${
+          product || "smartphone"
+        }&limit=12&offset=0`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer APP_USR-4177817543971930-051016-a679aa3622afb3b90ed48ae0beef3696-171802850`,
+          },
+          cache: "force-cache",
+        }
+      );
+
+      if (!res.ok) {
+        throw new Error(`Failed to fetch data ${res.status}`);
       }
-    );
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      return res.json();
+    } catch (err: any) {
+      throw err;
     }
-
-    return res.json();
   }
 );
 
