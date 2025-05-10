@@ -47,7 +47,7 @@ export const ImageSlider = ({ images }: Props) => {
                 className={styles.slider__image}
                 width={100}
                 height={100}
-                priority
+                loading="lazy"
               />
             </div>
           ))}
