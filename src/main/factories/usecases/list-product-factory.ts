@@ -6,8 +6,9 @@ import { IListProduct } from "@/domain/usecases";
 export const makeListProductUseCase = (
   searchByProduct: string,
   offset: number = 0,
+  accessToken: string = "",
 ): IListProduct => {
-  const fetchHttpClient = makeFetchHttpClient();
+  const fetchHttpClient = makeFetchHttpClient(accessToken);
   const apiUrl = makeApiUrl(
     `/products/search?site_id=MLB&status=active&q=${searchByProduct}&limit=${process.env.API_LIMIT}&offset=${offset}`,
   );
