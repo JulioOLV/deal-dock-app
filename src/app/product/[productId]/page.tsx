@@ -26,7 +26,7 @@ export default async function ProductDetailPage({
         const httpResponse = await getProductDetailUseCase.getProductDetail();
   
         return httpResponse;
-      } catch (err: any) {
+      } catch (err) {
         throw err;
       }
     }

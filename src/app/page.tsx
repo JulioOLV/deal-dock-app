@@ -7,7 +7,7 @@ import { Navbar, Pagination, ProductList } from "@/ui/components";
 import { makeRefreshTokenUseCase } from "@/main/factories/usecases/refresh-token-factory";
 
 interface SearchPageProps {
-  searchParams: { product?: string; offset?: number };
+  searchParams: Promise<any>;
 }
 
 export default async function Home({ searchParams }: SearchPageProps) {
@@ -27,7 +27,7 @@ export default async function Home({ searchParams }: SearchPageProps) {
       const httpResponse = await listProductUseCase.getProductList();
 
       return httpResponse;
-    } catch (err: any) {
+    } catch (err) {
       throw err;
     }
   });
