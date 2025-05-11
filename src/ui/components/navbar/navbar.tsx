@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./styles/navbar.module.scss";
+import { emitter } from "@/infra/event/mitt/event-bus";
 
 export const Navbar = () => {
   const [search, setSearch] = useState("");
@@ -17,7 +18,8 @@ export const Navbar = () => {
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    router.push(`/?product=${search}`);
+    router.push(`/?product=${search}&offset=0`);
+    emitter.emit("product-search-editted", search);
   };
 
   return (
