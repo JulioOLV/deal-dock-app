@@ -12,13 +12,13 @@ export class GetProductDetail implements IGetProductDetail {
   async getProductDetail(): Promise<ProductAPIDetailResponse> {
     const httpResponse = await this.httpGetClient.get({ url: this.url });
 
-    if (!httpResponse.body) {
-      throw new NoDataReceivedError();
-    }
-
     switch (httpResponse.statusCode) {
-      case HttpStatusCode.ok:
+      case HttpStatusCode.ok: {
+        if (!httpResponse.body) {
+          throw new NoDataReceivedError();
+        }
         return httpResponse.body;
+      }
       case HttpStatusCode.unauthorized:
         throw new InvalidCredentialsError();
       default:
