@@ -3,11 +3,11 @@ import { Card } from "../card/card";
 import styles from "./styles/product_list.module.scss";
 import { ProductAPIResponse } from "@/domain/models";
 
-export async function ProductList({
-  products,
-}: {
+interface ProductListProps {
   products: ProductAPIResponse;
-}) {
+}
+
+export async function ProductList({ products }: ProductListProps) {
   return (
     <div className={styles.product_list}>
       {products.results.map((product) => (
@@ -24,4 +24,4 @@ export async function ProductList({
       ))}
     </div>
   );
-};
+}
