@@ -1,7 +1,8 @@
-import { makeGetProductDetailUseCase } from "@/main/factories/usecases/get-product-detail-factory";
-import { Navbar, ProductDetail } from "../../components";
 import { cache } from "react";
+
+import { makeGetProductDetailUseCase } from "@/main/factories/usecases/get-product-detail-factory";
 import { ProductAPIDetailResponse } from "@/domain/models/product-detail-model";
+import { Navbar, ProductDetail } from "@/ui/components";
 
 interface PageProps {
   params: Promise<{ productId: string }>

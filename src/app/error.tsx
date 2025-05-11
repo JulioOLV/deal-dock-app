@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
-import { Navbar } from "./components";
 
 import styles from "./styles/error.module.scss";
+import { Navbar } from "@/ui/components";
 
 export default function Error({
   error,

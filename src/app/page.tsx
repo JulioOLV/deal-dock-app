@@ -1,10 +1,9 @@
 import { cache } from "react";
 
-import { Navbar, ProductList } from "./components";
-
 import styles from "./styles/page.module.scss";
 import { ProductAPIResponse } from "@/domain/models";
 import { makeListProductUseCase } from "@/main/factories/usecases/list-product-factory";
+import { Navbar, ProductList } from "@/ui/components";
 
 interface SearchPageProps {
   searchParams: { product?: string };
