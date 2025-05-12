@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -17,9 +17,11 @@ export const Navbar = () => {
   const router = useRouter();
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    router.push(`/?product=${search}&offset=0`);
-    emitter.emit("product-search-editted", search);
+    if (search) {
+      event.preventDefault();
+      router.push(`/?product=${search}&offset=0`);
+      emitter.emit("product-search-editted", search);
+    }
   };
 
   return (
@@ -34,7 +36,11 @@ export const Navbar = () => {
             priority
           />
         </div>
-        <form className={styles.search} onSubmit={handleSearch}>
+        <form
+          data-testid="search"
+          className={styles.search}
+          onSubmit={handleSearch}
+        >
           <input
             id="search"
             name="search"
