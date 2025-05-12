@@ -1,3 +1,5 @@
+import React from "react";
+
 import styles from "./styles/product_detail.module.scss";
 import { ImageSlider } from "../image_slider/image_slider";
 import { ProductAPIDetailResponse } from "@/domain/models/product-detail-model";

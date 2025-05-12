@@ -1,4 +1,4 @@
-import { cache } from "react";
+import React, { cache } from "react";
 
 import styles from "./styles/page.module.scss";
 import { ProductAPIResponse } from "@/domain/models";

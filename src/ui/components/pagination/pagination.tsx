@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import styles from "./styles/pagination.module.scss";
 import { emitter } from "@/infra/event/mitt/event-bus";

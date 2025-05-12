@@ -1,4 +1,4 @@
-import { cache } from "react";
+import React, { cache } from "react";
 
 import { makeGetProductDetailUseCase } from "@/main/factories/usecases/get-product-detail-factory";
 import { ProductAPIDetailResponse } from "@/domain/models/product-detail-model";

@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Card } from "../card/card";
 
 import styles from "./styles/product_list.module.scss";
