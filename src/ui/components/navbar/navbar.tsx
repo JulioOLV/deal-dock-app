@@ -10,6 +10,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./styles/navbar.module.scss";
 import { emitter } from "@/infra/event/mitt/event-bus";
+import Link from "next/link";
 
 export const Navbar = () => {
   const [search, setSearch] = useState("");
@@ -28,13 +29,15 @@ export const Navbar = () => {
     <nav className={styles.navbar}>
       <div className={styles.container}>
         <div className={styles.logo}>
-          <Image
-            src="/deal_dock_logo.png"
-            alt="DealDock Logo"
-            width={120}
-            height={120}
-            priority
-          />
+          <Link href={"/"}>
+            <Image
+              src="/deal_dock_logo.png"
+              alt="DealDock Logo"
+              width={120}
+              height={120}
+              priority
+            />
+          </Link>
         </div>
         <form
           data-testid="search"
